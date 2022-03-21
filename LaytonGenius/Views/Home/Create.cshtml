@@ -1,7 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
 }
-
+@model Appointment
 <h1>Create appointments here!</h1>
+<div>
+    <form method=“post”>
+        <div asp-validation-summary=“All”>
+            <label asp-for=“Name”>Group Name: </label>
+            <input asp-for=“Name” required />
+            <br />
+            <label asp-for=“Size”>Size: </label>
+            <input asp-for=“Size” placeholder=“Group size cannot exceed 15” required />
+            <br />
+            <label asp-for=“Email”>Due Date: </label>
+            <input asp-for=“Email” required />
+            <br />
+            <label asp-for=“Phone”>Phone Number: </label>
+            <input asp-for=“Phone” placeholder=“Optional” />
+            <br />
+            <label asp-for=“DateTime”>Appointment Time: </label>
+            <input asp-for=“DateTime” required />
+            <br />
+            <div class=“form-check”>
+                @Html.RadioButtonFor(model => model.Completed, true) Task Complete
+            </div>
+            <div class=“form-check”>
+                @Html.RadioButtonFor(model => model.Completed, false) Task Incomplete
+            </div>
+            <br />
+        </div>
+        <input type=“hidden” asp-for=“AppId” />
+        <button type=“submit”>Add now!</button>
+    </form>
+</div>

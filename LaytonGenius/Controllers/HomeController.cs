@@ -6,30 +6,46 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace LaytonGenius.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //Contstructor
+        private AppointmentContext _appContext { get; set; }
+        public HomeController(AppointmentContext appointmentContext)
         {
-            _logger = logger;
+            _appContext = appointmentContext;
         }
-
         public IActionResult Index()
         {
             return View();
         }
+        //---------------------CRUD-------------------------
 
+        //-------CREATE------- GET
+        [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            ViewBag.Responses = _appContext.Appointments.ToList();
+            return View(new Appointment());
+        }
+        //-------CREATE------- POST
+        [HttpPost]
+        public IActionResult Create(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                _appContext.Add(a);
+                _appContext.SaveChanges();
+                return RedirectToAction(“AppointmentsView”);
+            }
+            ViewBag.Categories = _appContext.ToList();
+            return View(“Create”);
         }
 
-
-        public IActionResult Appointments()
+        //-------READ-------  GET
+        [HttpGet]
+        public IActionResult AppointmentsView()
         {
             return View();
         }
