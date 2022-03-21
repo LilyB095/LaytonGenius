@@ -23,6 +23,12 @@ namespace LaytonGenius.Controllers
             return View();
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
         public IActionResult Appointments()
         {
             return View();
