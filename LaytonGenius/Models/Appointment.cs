@@ -12,7 +12,7 @@ namespace LaytonGenius.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        [Range(1, 15, ErrorMessage = “Value cannot exceed 15 people”)]
+        [Range(1, 15, ErrorMessage = "Value cannot exceed 15 people")]
         public int Size { get; set; }
         [EmailAddress]
         public string Email { get; set; }

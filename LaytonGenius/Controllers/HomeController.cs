@@ -37,10 +37,10 @@ namespace LaytonGenius.Controllers
             {
                 _appContext.Add(a);
                 _appContext.SaveChanges();
-                return RedirectToAction(“AppointmentsView”);
+                return RedirectToAction("AppointmentsView");
             }
             ViewBag.Categories = _appContext.ToList();
-            return View(“Create”);
+            return View("Create");
         }
 
         //-------READ-------  GET
