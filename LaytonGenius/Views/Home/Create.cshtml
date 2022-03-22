@@ -16,10 +16,10 @@
             <input asp-for="Email" required />
             <br />
             <label asp-for="Phone">Phone Number: </label>
-            <input asp-for="Phone" placeholder=“Optional” />
+            <input asp-for="Phone" placeholder="Optional" />
             <br />
             <label asp-for="DateTime">Appointment Time: </label>
-            <input asp-for="DateTime" required value="03/23/2022 00:00:00"/>
+            <input asp-for="DateTime" disabled value="03/23/2022 00:00:00"/>
             <br />
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.Completed, true) Task Complete
