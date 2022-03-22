@@ -1,7 +1,7 @@
 ﻿@{
 }
 
-<h1>Appointments</h1>
+<h1>Temple Appointments</h1>
 
 @{
     ViewData["Title"] = "Appointments";
@@ -9,22 +9,11 @@
 
 @model List<Appointment>
 
-<h4>Here the list of appointmnets. Please edit, and mark completed when you have completed the task.</h4>
+<h4>Here is list of appointmnets. Please edit, and mark completed when the appointment is completed.</h4>
 <br />
-<br />
-<br />
-
-
-<div class="row-fluid">
-    <div class="center">
-        <h1>Temple appointments</h1>
-        <br />
-    </div>
-</div>
-
-
 
 <div class="row">
+
     @*This is for the UPCOMING appointments table*@
     <div class="col center">
         <h4 class="quadrant">Upcoming</h4>
@@ -60,8 +49,12 @@
             </tbody>
         </table>
     </div>
-    <br />
-    <br />
+</div>
+
+<br />
+<br />
+
+<div class="row">
 
     @*This is for the COMPLETED appointments table*@
     <div class="col center">
@@ -97,7 +90,8 @@
                 }
             </tbody>
         </table>
-
     </div>
 </div>
+
+
 
