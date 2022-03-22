@@ -20,7 +20,13 @@ namespace LaytonGenius.Controllers
         {
             return View();
         }
+
+
+
         //---------------------CRUD-------------------------
+
+
+
 
         //-------CREATE------- GET
         [HttpGet]
@@ -29,6 +35,7 @@ namespace LaytonGenius.Controllers
             ViewBag.Responses = _appContext.Appointments.ToList();
             return View(new Appointment());
         }
+
         //-------CREATE------- POST
         [HttpPost]
         public IActionResult Create(Appointment a)
@@ -42,6 +49,9 @@ namespace LaytonGenius.Controllers
             // [FIXME] ViewBag.Categories = _appContext.ToList(); where is categories coming from? It isn't a property of appointment
             return View("Create");
         }
+
+
+
 
         //-------READ-------  GET
         [HttpGet]
