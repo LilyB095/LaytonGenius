@@ -39,7 +39,7 @@ namespace LaytonGenius.Controllers
                 _appContext.SaveChanges();
                 return RedirectToAction("AppointmentsView");
             }
-            ViewBag.Categories = _appContext.ToList();
+            // [FIXME] ViewBag.Categories = _appContext.ToList(); where is categories coming from? It isn't a property of appointment
             return View("Create");
         }
 
