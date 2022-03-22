@@ -1,5 +1,6 @@
 ﻿using LaytonGenius.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,14 @@ namespace LaytonGenius.Controllers
         [HttpGet]
         public IActionResult AppointmentsView()
         {
-            return View();
+            ViewBag.Appointments = _appContext.Appointments.ToList();
+
+            var application = _appContext.Appointments
+                //.Include(x => x.AppId)
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            return View(application);
         }
     }
 }
