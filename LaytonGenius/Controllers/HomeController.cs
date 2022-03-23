@@ -27,11 +27,11 @@ namespace LaytonGenius.Controllers
         [HttpGet]
         public IActionResult SignUpTimes()
         {
-            ViewBag.Appointments = _appContext.Appointments.ToList();
+            ViewBag.AvailableTimes = _appContext.AvailableTimes.ToList();
 
-            var application = _appContext.Appointments
+            var application = _appContext.AvailableTimes
                 //.Include(x => x.AppId)
-                .OrderBy(x => x.Name)
+                .OrderBy(x => x.Date)
                 .ToList();
 
             return View(application);
