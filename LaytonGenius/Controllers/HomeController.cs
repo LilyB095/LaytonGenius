@@ -74,17 +74,9 @@ namespace LaytonGenius.Controllers
         [HttpPost]
         public IActionResult ConfirmEdit(Appointment a)
         {
-            if (ModelState.IsValid)
-            {
                 _appContext.Update(a);
                 _appContext.SaveChanges();
                 return RedirectToAction("AppointmentsView");
-            }
-            else
-            {
-                RedirectToAction("Edit", a);
-            }
-            return RedirectToAction("AppointmentsView");
         }
 
 
