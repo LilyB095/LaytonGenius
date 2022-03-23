@@ -35,15 +35,26 @@
                 {
                     if (x.Completed == false)
                     {
-                        <tr>
-                            <td>@x.Name</td>
-                            <td>@x.Size</td>
-                            <td>@x.DateTime</td>
-                            <td>@x.Email</td>
-                            <td>@x.Phone</td>
-                            <td><a href="">Edit</a></td>
-                            <td><a href="">Delete</a></td>
-                        </tr>
+                <tr>
+                    <td hidden>@x.AppId</td>
+                    <td>@x.Name</td>
+                    <td>@x.Size</td>
+                    <td>@x.DateTime</td>
+                    <td>@x.Email</td>
+                    <td>@x.Phone</td>
+                    <td class="text-center">
+                        <form method="post" asp-action="Edit">
+                            <input type="hidden" name="a" value="@x.AppId" />
+                            <button type="submit" class="btn btn-sm ">Edit</button>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <form method="post" asp-action="Delete">
+                            <input type="hidden" name="a" value="@x.AppId" />
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
                     }
                 }
             </tbody>

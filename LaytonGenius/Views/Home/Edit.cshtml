@@ -1,0 +1,34 @@
+﻿
+@{
+}
+@model Appointment
+<h1>Create appointments here!</h1>
+<div>
+    <form method="post" asp-action="ConfirmEdit">
+        <div asp-validation-summary="All"></div>
+        <label asp-for="Name">Group Name: </label>
+        <input asp-for="Name" required value="@Model.Name"/>
+        <br />
+        <label asp-for="Size">Size: </label>
+        <input asp-for="Size" placeholder="Group size cannot exceed 15" required value="@Model.Size"/>
+        <br />
+        <label asp-for="Email">Email: </label>
+        <input asp-for="Email" required value="@Model.Email"/>
+        <br />
+        <label asp-for="Phone">Phone Number: </label>
+        <input asp-for="Phone" placeholder="Optional" value="@Model.Phone" />
+        <br />
+        <label asp-for="DateTime">Appointment Time: </label>
+        <input asp-for="DateTime" disabled value="@Model.DateTime" />
+        <br />
+        <div class="form-check">
+            @Html.RadioButtonFor(model => model.Completed, true) Task Complete
+        </div>
+        <div class="form-check">
+            @Html.RadioButtonFor(model => model.Completed, false) Task Incomplete
+        </div>
+        <br />
+        <input type="hidden" asp-for="AppId" value="@Model.AppId"/>
+        <button type="submit">Complete Edits!</button>
+    </form>
+</div>
