@@ -53,6 +53,41 @@ namespace LaytonGenius.Controllers
 
 
 
+        [HttpPost]
+        public IActionResult Delete(int a)
+        {
+            var application = _appContext.Appointments.Single(x => x.AppId == a);
+            _appContext.Remove(application);
+            _appContext.SaveChanges();
+            return RedirectToAction("AppointmentsView");
+        }
+        
+        [HttpPost]
+        public IActionResult Edit(int a)
+        {
+            ViewBag.Responses = _appContext.Appointments.ToList();
+            var application = _appContext.Appointments.Single(x => x.AppId == a);
+            return View("Edit", application);
+        }
+
+
+        [HttpPost]
+        public IActionResult ConfirmEdit(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                _appContext.Update(a);
+                _appContext.SaveChanges();
+                return RedirectToAction("AppointmentsView");
+            }
+            else
+            {
+                RedirectToAction("Edit", a);
+            }
+            return RedirectToAction("AppointmentsView");
+        }
+
+
 
         //-------READ-------  GET
         [HttpGet]
