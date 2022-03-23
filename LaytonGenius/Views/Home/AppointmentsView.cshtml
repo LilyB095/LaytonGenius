@@ -42,7 +42,7 @@
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
                     <td class="text-center">
-                        <form method="post" asp-action="Edit">
+                        <form method="get" asp-action="Edit">
                             <input type="hidden" name="a" value="@x.AppId" />
                             <button type="submit" class="btn btn-sm ">Edit</button>
                         </form>

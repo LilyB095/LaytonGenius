@@ -62,32 +62,22 @@ namespace LaytonGenius.Controllers
             return RedirectToAction("AppointmentsView");
         }
         
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(int a)
         {
             ViewBag.Responses = _appContext.Appointments.ToList();
             var application = _appContext.Appointments.Single(x => x.AppId == a);
-            return View("Edit", application);
+            return View("Create", application);
         }
 
 
         [HttpPost]
-        public IActionResult ConfirmEdit(Appointment a)
+        public IActionResult Edit(Appointment a)
         {
-            if (ModelState.IsValid)
-            {
-                _appContext.Update(a);
-                _appContext.SaveChanges();
-                return RedirectToAction("AppointmentsView");
-            }
-            else
-            {
-                RedirectToAction("Edit", a);
-            }
+            _appContext.Update(a);
+            _appContext.SaveChanges();
             return RedirectToAction("AppointmentsView");
         }
-
-
 
         //-------READ-------  GET
         [HttpGet]
