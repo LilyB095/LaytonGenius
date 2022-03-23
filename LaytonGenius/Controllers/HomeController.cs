@@ -23,6 +23,22 @@ namespace LaytonGenius.Controllers
         }
 
 
+        // ------------ FIRST SIGN UP (Times GET and POST) -------------------
+        [HttpGet]
+        public IActionResult SignUpTimes()
+        {
+            ViewBag.Appointments = _appContext.Appointments.ToList();
+
+            var application = _appContext.Appointments
+                //.Include(x => x.AppId)
+                .OrderBy(x => x.Name)
+                .ToList();
+
+            return View(application);
+        }
+
+
+
 
         //---------------------CRUD-------------------------
 
@@ -36,6 +52,8 @@ namespace LaytonGenius.Controllers
             ViewBag.Responses = _appContext.Appointments.ToList();
             return View(new Appointment());
         }
+
+
 
         //-------CREATE------- POST
         [HttpPost]
