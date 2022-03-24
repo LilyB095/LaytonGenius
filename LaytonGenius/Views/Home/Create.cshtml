@@ -18,8 +18,9 @@
             <label asp-for="Phone">Phone Number: </label>
             <input asp-for="Phone" placeholder="Optional" />
             <br />
-            <label asp-for="DateID">Appointment Time: </label>
-            <input asp-for="DateID" disabled value="@Model.DateID"/>
+            <label asp-for="DateTime">Appointment Time: </label>
+            <input asp-for="DateTime" disabled value="@Model.DateTime.Date"/>
+            <input asp-for="DateID" type="hidden" value="@Model.DateID" />
             <br />
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.Completed, true) Task Complete

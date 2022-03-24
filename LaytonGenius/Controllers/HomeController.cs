@@ -53,7 +53,7 @@ namespace LaytonGenius.Controllers
             ViewBag.Purple = _appContext.AvailableTimes.Single(x => x.DateID == dateid);
             Appointment app = new Appointment();
             app.DateID = dateid;
-            //app.DateTime = .FirstOrDefault<Available>(x => x.DateID == dateid);
+            app.DateTime = _appContext.AvailableTimes.Single(x => x.DateID == dateid).Date;
 
             return View(app);
         }
