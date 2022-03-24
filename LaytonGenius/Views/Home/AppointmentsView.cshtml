@@ -94,14 +94,14 @@
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
                     <td class="text-center">
-                        <form method="post" asp-action="Edit">
-                            <input type="hidden" name="a" value="@x.AppId" />
+                        <form method="get" asp-action="Edit">
+                            <input type="hidden" name="appid" value="@x.AppId" />
                             <button type="submit" class="btn btn-sm ">Edit</button>
                         </form>
                     </td>
                     <td class="text-center">
                         <form method="post" asp-action="Delete">
-                            <input type="hidden" name="a" value="@x.AppId" />
+                            <input type="hidden" name="appid" value="@x.AppId" />
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     </td>
