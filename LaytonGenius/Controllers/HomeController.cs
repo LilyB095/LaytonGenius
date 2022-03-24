@@ -49,9 +49,12 @@ namespace LaytonGenius.Controllers
         [HttpGet]
         public IActionResult Create(int dateid)
         {
-            ViewBag.Responses = _appContext.Appointments.ToList();
+            //ViewBag.Responses = _appContext.Appointments.ToList();
+            ViewBag.Purple = _appContext.AvailableTimes.Single(x => x.DateID == dateid);
             Appointment app = new Appointment();
             app.DateID = dateid;
+            //app.DateTime = .FirstOrDefault<Available>(x => x.DateID == dateid);
+
             return View(app);
         }
 
