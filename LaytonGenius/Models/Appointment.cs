@@ -7,7 +7,6 @@ namespace LaytonGenius.Models
     {
         [Key]
         [Required]
-        [BindNever]
         public int AppId { get; set; }
         
         public string Name { get; set; }
