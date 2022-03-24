@@ -57,11 +57,11 @@ namespace LaytonGenius.Controllers
 
         //-------CREATE------- POST
         [HttpPost]
-        public IActionResult Create(Appointment a)
+        public IActionResult Create(Appointment app)
         {
             if (ModelState.IsValid)
             {
-                _appContext.Add(a);
+                _appContext.Add(app);
                 _appContext.SaveChanges();
                 return RedirectToAction("AppointmentsView");
             }
@@ -72,9 +72,9 @@ namespace LaytonGenius.Controllers
 
 
         [HttpPost]
-        public IActionResult Delete(int a)
+        public IActionResult Delete(int appid)
         {
-            var application = _appContext.Appointments.Single(x => x.AppId == a);
+            var application = _appContext.Appointments.Single(x => x.AppId == appid);
             _appContext.Remove(application);
             _appContext.SaveChanges();
             return RedirectToAction("AppointmentsView");
