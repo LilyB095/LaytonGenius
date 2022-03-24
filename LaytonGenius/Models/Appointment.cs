@@ -7,19 +7,24 @@ namespace LaytonGenius.Models
     {
         [Key]
         [Required]
-        
         public int AppId { get; set; }
-        [Required]
+        
         public string Name { get; set; }
+
         [Required]
-        [Range(1, 15, ErrorMessage = "Value cannot exceed 15 people")]
+        //[Range(1, 15, ErrorMessage = "Value cannot exceed 15 people")]
         public int Size { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         [Phone]
         public string Phone { get; set; }
+        public bool Completed { get; set; }
+
+
+        // Build Foreign Key Relationship
+        [Required]
+        public int DateID { get; set; }
         [Required]
         public DateTime DateTime { get; set; }
-        public bool Completed { get; set; }
     }
 }

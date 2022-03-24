@@ -2,24 +2,24 @@
 @{
 }
 @model Appointment
-<h1>Create appointments here!</h1>
+<h1>Please fill out your information here!</h1>
 <div>
     <form method="post">
         <div asp-validation-summary="All"></div>
             <label asp-for="Name">Group Name: </label>
-            <input asp-for="Name" required />
+            <input asp-for="Name" />
             <br />
             <label asp-for="Size">Size: </label>
-            <input asp-for="Size" placeholder="Group size cannot exceed 15" required />
+            <input asp-for="Size" placeholder="Group size cannot exceed 15" />
             <br />
             <label asp-for="Email">Email: </label>
-            <input asp-for="Email" required />
+            <input asp-for="Email" />
             <br />
             <label asp-for="Phone">Phone Number: </label>
             <input asp-for="Phone" placeholder="Optional" />
             <br />
-            <label asp-for="DateTime">Appointment Time: </label>
-            <input asp-for="DateTime" disabled value="03/23/2022 00:00:00"/>
+            <label asp-for="DateID">Appointment Time: </label>
+            <input asp-for="DateID" disabled value="1"/>
             <br />
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.Completed, true) Task Complete

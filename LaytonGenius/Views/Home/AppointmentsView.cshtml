@@ -38,7 +38,7 @@
                 <tr>
                     <td>@x.Name</td>
                     <td>@x.Size</td>
-                    <td>@x.DateTime</td>
+                    <td>@x.DateID</td>
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
                     <td class="text-center">
@@ -49,7 +49,7 @@
                     </td>
                     <td class="text-center">
                         <form method="post" asp-action="Delete">
-                            <input type="hidden" name="a" value="@x.AppId" />
+                            <input type="hidden" name="appid" value="@x.AppId" />
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     </td>
