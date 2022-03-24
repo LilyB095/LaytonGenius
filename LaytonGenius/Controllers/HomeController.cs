@@ -49,6 +49,7 @@ namespace LaytonGenius.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+
             ViewBag.Responses = _appContext.Appointments.ToList();
             return View(new Appointment());
         }
@@ -81,18 +82,18 @@ namespace LaytonGenius.Controllers
         }
         
         [HttpGet]
-        public IActionResult Edit(int a)
+        public IActionResult Edit(int appid)
         {
-            ViewBag.Responses = _appContext.Appointments.ToList();
-            var application = _appContext.Appointments.Single(x => x.AppId == a);
+            //ViewBag.Responses = _appContext.Appointments.ToList();
+            var application = _appContext.Appointments.Single(x => x.AppId == appid);
             return View("Create", application);
         }
 
 
         [HttpPost]
-        public IActionResult Edit(Appointment a)
+        public IActionResult Edit(Appointment app)
         {
-            _appContext.Update(a);
+            _appContext.Update(app);
             _appContext.SaveChanges();
             return RedirectToAction("AppointmentsView");
         }

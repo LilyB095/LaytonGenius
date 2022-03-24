@@ -42,10 +42,7 @@
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
                     <td class="text-center">
-                        <form method="get" asp-action="Edit">
-                            <input type="hidden" name="a" value="@x.AppId" />
-                            <button type="submit" class="btn btn-sm ">Edit</button>
-                        </form>
+                        <a asp-controller="Home" asp-action="Edit" asp-route-appid="@x.AppId">Edit</a>
                     </td>
                     <td class="text-center">
                         <form method="post" asp-action="Delete">
@@ -94,10 +91,8 @@
                     <td>@x.Email</td>
                     <td>@x.Phone</td>
                     <td class="text-center">
-                        <form method="post" asp-action="Edit">
-                            <input type="hidden" name="a" value="@x.AppId" />
-                            <button type="submit" class="btn btn-sm ">Edit</button>
-                        </form>
+                        
+                        <a asp-controller="Home" asp-action="Edit" asp-route-a="@x.AppId">Edit</a>
                     </td>
                     <td class="text-center">
                         <form method="post" asp-action="Delete">
