@@ -47,10 +47,12 @@ namespace LaytonGenius.Controllers
 
         //-------CREATE------- GET
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int dateid)
         {
             ViewBag.Responses = _appContext.Appointments.ToList();
-            return View(new Appointment());
+            Appointment app = new Appointment();
+            app.DateID = dateid;
+            return View(app);
         }
 
 
