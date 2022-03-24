@@ -3,29 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LaytonGenius.Migrations
 {
-    public partial class All : Migration
+    public partial class Initialyah : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Appointments",
-                columns: table => new
-                {
-                    AppId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: false),
-                    Size = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Completed = table.Column<bool>(nullable: false),
-                    DateID = table.Column<int>(nullable: false),
-                    DateTime = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointments", x => x.AppId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "AvailableTimes",
                 columns: table => new
@@ -37,6 +18,31 @@ namespace LaytonGenius.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AvailableTimes", x => x.DateID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Appointments",
+                columns: table => new
+                {
+                    AppId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    Size = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    Completed = table.Column<bool>(nullable: false),
+                    DateID = table.Column<int>(nullable: false),
+                    AvailableDateID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appointments", x => x.AppId);
+                    table.ForeignKey(
+                        name: "FK_Appointments_AvailableTimes_AvailableDateID",
+                        column: x => x.AvailableDateID,
+                        principalTable: "AvailableTimes",
+                        principalColumn: "DateID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -103,6 +109,11 @@ namespace LaytonGenius.Migrations
                 table: "AvailableTimes",
                 columns: new[] { "DateID", "Date" },
                 values: new object[] { 13, new DateTime(2022, 3, 23, 20, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_AvailableDateID",
+                table: "Appointments",
+                column: "AvailableDateID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -50,10 +50,9 @@ namespace LaytonGenius.Controllers
         public IActionResult Create(int dateid)
         {
             //ViewBag.Responses = _appContext.Appointments.ToList();
-            ViewBag.Purple = _appContext.AvailableTimes.Single(x => x.DateID == dateid);
+            ViewBag.Timeslot = _appContext.AvailableTimes.Single(x => x.DateID == dateid);
             Appointment app = new Appointment();
             app.DateID = dateid;
-            app.DateTime = _appContext.AvailableTimes.Single(x => x.DateID == dateid).Date;
 
             return View(app);
         }
@@ -70,7 +69,6 @@ namespace LaytonGenius.Controllers
                 _appContext.SaveChanges();
                 return RedirectToAction("AppointmentsView");
             }
-            // [FIXME] ViewBag.Categories = _appContext.ToList(); where is categories coming from? It isn't a property of appointment
             return View("Create");
         }
 
@@ -89,7 +87,11 @@ namespace LaytonGenius.Controllers
         public IActionResult Edit(int appid)
         {
             ViewBag.Responses = _appContext.Appointments.ToList();
+
             var application = _appContext.Appointments.Single(x => x.AppId == appid);
+
+            ViewBag.Timeslot = _appContext.AvailableTimes.Single(x => x.DateID == application.DateID);
+
             return View("Create", application);
         }
 

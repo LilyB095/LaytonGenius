@@ -22,20 +22,19 @@ namespace LaytonGenius.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("AvailableDateID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("Completed")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DateID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -45,6 +44,8 @@ namespace LaytonGenius.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AppId");
+
+                    b.HasIndex("AvailableDateID");
 
                     b.ToTable("Appointments");
                 });
@@ -128,6 +129,13 @@ namespace LaytonGenius.Migrations
                             DateID = 13,
                             Date = new DateTime(2022, 3, 23, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("LaytonGenius.Models.Appointment", b =>
+                {
+                    b.HasOne("LaytonGenius.Models.Available", "Available")
+                        .WithMany()
+                        .HasForeignKey("AvailableDateID");
                 });
 #pragma warning restore 612, 618
         }

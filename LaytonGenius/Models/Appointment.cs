@@ -24,7 +24,6 @@ namespace LaytonGenius.Models
         // Build Foreign Key Relationship
         [Required]
         public int DateID { get; set; }
-        [Required]
-        public DateTime DateTime { get; set; }
+        public Available Available { get; set; }
     }
 }

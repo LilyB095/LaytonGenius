@@ -3,33 +3,33 @@
 }
 @model Appointment
 <h1>Please fill out your information here!</h1>
+<h2>Your Tour Time: <span style="font-weight: bolder; color:brown">@ViewBag.Timeslot.Date</span> </h2>
 <div>
     <form method="post">
         <div asp-validation-summary="All"></div>
-            <label asp-for="Name">Group Name: </label>
-            <input asp-for="Name" />
-            <br />
-            <label asp-for="Size">Size: </label>
-            <input asp-for="Size" placeholder="Group size cannot exceed 15" />
-            <br />
-            <label asp-for="Email">Email: </label>
-            <input asp-for="Email" />
-            <br />
-            <label asp-for="Phone">Phone Number: </label>
-            <input asp-for="Phone" placeholder="Optional" />
-            <br />
-            <label asp-for="DateTime">Appointment Time: </label>
-            <input asp-for="DateTime" disabled value="@Model.DateTime.Date"/>
-            <input asp-for="DateID" type="hidden" value="@Model.DateID" />
-            <br />
-            <div class="form-check">
-                @Html.RadioButtonFor(model => model.Completed, true) Task Complete
-            </div>
-            <div class="form-check">
-                @Html.RadioButtonFor(model => model.Completed, false) Task Incomplete
-            </div>
-            <br />
+        <label asp-for="Name">Group Name: </label>
+        <input asp-for="Name" />
+        <br />
+        <label asp-for="Size">Size: </label>
+        <input asp-for="Size" placeholder="Group size cannot exceed 15" />
+        <br />
+        <label asp-for="Email">Email: </label>
+        <input asp-for="Email" />
+        <br />
+        <label asp-for="Phone">Phone Number: </label>
+        <input asp-for="Phone" placeholder="Optional" />
+        <br />
+        <input asp-for="DateID" value="@Model.DateID" />
+
+        <br />
+        <div class="form-check">
+            @Html.RadioButtonFor(model => model.Completed, true) Task Complete
+        </div>
+        <div class="form-check">
+            @Html.RadioButtonFor(model => model.Completed, false) Task Incomplete
+        </div>
+        <br />
         <input type="hidden" asp-for="AppId" />
-        <button type="submit">Add now!</button>
+        <button type="submit">SUBMIT</button>
     </form>
 </div>
